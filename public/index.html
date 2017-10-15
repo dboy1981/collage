@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>上海理工大学校欢迎你！</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <link href="./css/blog.css" rel="stylesheet">
+  <!--[if lt IE 9]><script src="./assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="./js/ie-emulation-modes-warning.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="container">
+    <div class="blog-header clearfix">
+      <h3 class="blog-title pull-left">您好！上海理工大学校欢迎你！</h3>
+      <p class="lead blog-description pull-right" id="weather"></p>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 blog-main">
+        <div class="blog-post">
+          <p><img class="img-responsive" src="./images/banner.jpg"></p>
+        </div>
+        <!-- /.blog-post -->
+      </div>
+      <!-- /.blog-main -->
+      <div class="col-sm-4 blog-sidebar">
+        <h4 class="title-gg center-block">公告栏<span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></h4>
+        <div class="sidebar-module sidebar-module-inset">
+          <ul id="breakNewsList" class="nr-inset">
+              <li v-for="item in items">
+                  <a :href="'/detail.html?id=' + item._id">{{ item.title }}</a>
+              </li>
+          </ul>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">学校概况</h3>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group ul-szll">
+            	<li><a href="/list.html?t=leader">领导</a></li>
+            	<li><a href="/list.html?t=teacher">师资</a></li>
+            	<li><a href="/list.html?t=classmate">校友</a></li>
+            	<li><a href="/list.html?t=award">获奖</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /.blog-sidebar -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/scroll.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="./js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+<script src="./js/vue.min.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#breakNewsList',
+    data: {
+      items: [],
+      weather_data: {date:'', weather:''}
+    },
+    created: function(){
+      getNews();
+    }
+  });
+
+  function getNews() {
+    var url = '/api/list?t=news';
+    $.get(url, function(ret){
+      if(ret.code != 0){
+        alert('System Error!(' + ret.code + ')');
+        return;
+      }
+      vm.items = ret.data;
+      setTimeout(function(){
+        var scroll2 = new ScrollText("breakNewsList", "pre2", "next2", true, 50, true);
+        scroll2.LineHeight = 50;
+      }, 1000);
+      
+    })
+  }
+
+  function baiduWeather() {
+    var url = '/api/weather';
+    $.get(url, function(ret){
+      $('#weather').html(ret.data.results[0].weather_data[0].date + ' ' + ret.data.results[0].weather_data[0].weather);
+    });
+  }
+
+  $(function(){
+    baiduWeather();
+  })
+</script>
+
+</html>

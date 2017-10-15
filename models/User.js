@@ -5,14 +5,17 @@ var Types = keystone.Field.Types;
  * User Model
  * ==========
  */
-var User = new keystone.List('User');
+var User = new keystone.List('User', {
+	label: '用户',
+	plural: '用户'
+});
 
 User.add({
-	name: { type: Types.Name, required: true, index: true },
-	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
-	password: { type: Types.Password, initial: true, required: true },
+	name: { type: Types.Name, required: true, index: true, label: '用户名' },
+	email: { type: Types.Email, initial: true, required: true, unique: true, index: true, label: '邮箱' },
+	password: { type: Types.Password, initial: true, required: true, label: '密码' },
 }, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+	isAdmin: { type: Boolean, label: '是否可以访问后台', index: true },
 });
 
 // Provide access to Keystone

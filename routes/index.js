@@ -29,12 +29,16 @@ keystone.pre('render', middleware.flashMessages);
 // Import Route Controllers
 var routes = {
 	views: importRoutes('./views'),
+	apis: importRoutes('./apis')
 };
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
+	app.get('/api/list', routes.apis.list);
+	app.get('/api/detail', routes.apis.detail);
+	app.get('/api/weather', routes.apis.weather);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

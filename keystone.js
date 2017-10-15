@@ -47,7 +47,8 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	users: 'users',
+	'用户管理': 'users',
+	'文章管理': 'posts'
 });
 
 // Start Keystone to connect to your database and initialise the web server

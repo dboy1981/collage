@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>上海理工大学校欢迎你！</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <link href="./css/blog.css" rel="stylesheet">
+  <!--[if lt IE 9]><script src="./assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="./js/ie-emulation-modes-warning.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="blog-header clearfix">
+      <h3 class="blog-title pull-left">{{ categoryName }}</h3>
+    </div>
+    <div class="blog-post th-post">
+      <div class="media">
+        <div class="media-body">
+          <div v-if="item.category !== 'news'" class="pull-left"><img :src="'/files/' + item.avator.filename" data-holder-rendered="true"></div>
+          <h1 class="media-heading">{{ item.title }}</h1>
+          <div v-html="item.content"></div>
+        </div>
+      </div>
+    </div>
+    <p class="ff-btn" onclick="history.go(-1);"><img src="./images/ff-btn.png" data-holder-rendered="true"></p>
+    <!-- /.blog-post -->
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/scroll.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+  <script src="./js/vue.min.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#container',
+      data: {
+        item: {}
+      },
+      created: function(){
+        getDetail();
+      },
+      computed: {
+        categoryName: function(){
+          switch(this.item.category){
+            case 'news':
+              return '新闻公告';
+            case 'leader':
+              return '领导介绍';
+            case 'teacher':
+              return '师资介绍';
+            case 'award':
+              return '获奖介绍';
+            case 'classmate':
+              return '校友介绍';  
+          }
+          return "";
+        }
+      }
+    });
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+  
+    function getDetail() {
+      var url = '/api/detail?id=' + getParameterByName("id");
+      $.get(url, function(ret){
+        if(ret.code != 0){
+          alert('System Error!(' + ret.code + ')');
+          return;
+        }
+        vm.item = ret.data;
+      })
+    }
+  </script>
+</body>
+
+</html>

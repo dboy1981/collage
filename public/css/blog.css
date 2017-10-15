@@ -1,0 +1,328 @@
+/*
+ * Globals
+ */
+
+body {
+  font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  color: #000;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  font-weight: normal;
+  color: #000;
+}
+ul, li {
+      list-style-type: none;
+}
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 98%;
+    max-width: 1920px;
+  }
+}
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.blog-title {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 30px;
+    font-weight: normal;
+    background: #7daa6b url(../images/title-bg.jpg)no-repeat top right;
+    color: #fff;
+    padding: 0.25em 3em 0.25em 0.5em;
+    background-size: contain;
+}
+.blog-description {
+  font-size: 24px;
+  color: #000;
+}
+
+
+/*
+ * Main column and sidebar layout
+ */
+
+.blog-main {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 15px;
+}
+.sidebar-module-inset {
+    padding: 20px 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
+}
+.title-gg {
+    text-align: center;
+    color: #fff;
+    background: #7caa71;
+    padding: 0.35em;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+.title-gg span {
+  position: relative;
+    top: 5px;
+    left: 10px;
+}
+.nr-inset {
+    background: #fffbfb;
+    font-size: 16px;
+    font-weight: 100;
+    padding: 0.5em 0;
+    max-height: 275px;
+    overflow: hidden;
+}
+.nr-inset li {
+  height: 25px; margin-left: 40px; margin-bottom: 12px;     list-style-type: disc;
+}
+
+.nr-inset li a {
+  color: #333;
+}
+.inset-list {
+  background: #f5f5f5;
+}
+.inset-list li {
+  border-bottom: 1px dashed #a1a1a1;height: 33px;
+}
+
+.panel-default {
+    border-color: #c9a04d;
+    margin-top: 20px;
+    border-radius: 0;
+}
+.panel-default>.panel-heading {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    background-color: #c9a04e;
+    border: 0;
+    border-radius: 0;
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 30px;
+    color: inherit;
+}
+.ul-szll li {
+    width: 50%;
+    border-left: 0;
+    float: left;
+}
+.ul-szll li a {
+    width: 100%;
+    display: inline-block;
+    line-height: 3.55;
+    border-bottom: 0;
+    border-left: 0;
+    text-align: center;
+    background: #fff9d1;
+    font-size: 24px;
+    color: #3c1b00;
+    border: 1px solid #c9a04d;
+}
+.panel-body {
+    padding: 0;
+}
+.list-group {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+/* Pagination */
+.pager {
+  margin-bottom: 60px;
+  text-align: left;
+}
+.pager > li > a {
+  width: 140px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.ph-list .col-md-3 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.ph-list .thumbnail {
+  border-radius: 0;
+      padding: 2px;
+}
+.ph-list .row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+.ph-row h3 {
+  font-size: 16px;
+}
+.ph-row {
+  overflow-y: auto;
+    max-height: 930px;
+}
+.ph-row p {
+  font-size: 14px;
+}
+.ph-slide h3 {
+  color: #fff;
+}
+.ph-slide .carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    z-index: 999;
+    position: relative;
+    left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.carousel-indicators {
+    bottom: 0;
+}
+.ph-slide .ph-slide {
+    position: relative;
+    padding: 2px;
+    border: 1px solid #ddd;
+}
+.ss-form {
+  margin-top: 1em;
+}
+.ss-form .glyphicon {
+  color: #9f9c9c;    top: 3px;
+}
+.ff-btn {text-align: right;
+    margin-top: 1em;
+  }
+.ss-form .input-lg {
+    height: 60px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;background: #f2f2f2;
+    border-radius: 6px;border: #ccc solid 2px;border-right: 0;
+    border-left: 0;
+
+}
+.ss-form .btn-lg {
+    padding: 10px 26px;
+    font-size: 22px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    height: 60px;
+    background: #f2f2f2;
+    border: #ccc solid 2px;
+}
+.btn-ss {
+    background: #7da96a!important;
+    color: #fff;
+}
+.th-post {
+  font-size: 16px;
+  line-height: 1.6;
+  background: #efefef;
+  padding: 1em;
+  color: #222;
+}
+.th-post p {
+  text-indent: 2em;
+  margin-bottom: 1.6em;
+}
+.th-post img {
+  max-width: 100%;
+}
+.post-img {
+  text-align: center;
+}
+.th-post .pull-left, .th-post .media>.pull-left {
+    padding-right: 30px;
+}
+.th-post .media-heading {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+.th-table {
+  background: #fff;
+}
+.th-table, .th-table th{
+  text-align: center;
+  line-height: 2.5!important;
+}
+.th-table th {
+  font-size: 26px;
+  color: #FFF;
+  background: #bcc13c;
+}
+.th-table td {
+  font-size: 22px;
+  line-height: 2.5!important;
+}
+.th-table th.th2 {
+  background: #7caa71;
+}
+.th-table th.th3 {
+  background: #c6938b;
+}
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 60px;
+}
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 40px;
+}
+.blog-post-meta {
+  margin-bottom: 20px;
+  color: #999;
+}
+
+
+/*
+ * Footer
+ */
+
+.blog-footer {
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+.container {
+    width: 98%;
+}
+}
