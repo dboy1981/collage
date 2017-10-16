@@ -82,7 +82,7 @@
   });
 
   function getNews() {
-    var url = '/api/list?t=news';
+    var url = '/api/list?t=news&limit=10';
     $.get(url, function(ret){
       if(ret.code != 0){
         alert('System Error!(' + ret.code + ')');

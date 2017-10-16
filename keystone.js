@@ -13,8 +13,7 @@ keystone.init({
 	'name': 'USST',
 	'brand': 'USST',
 
-	'port': 8888,
-	'host': '127.0.0.1',
+	'port': 8003,
 
 	'less': 'public',
 	'static': 'public',

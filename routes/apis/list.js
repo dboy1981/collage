@@ -16,14 +16,20 @@ exports = module.exports = function (req, res) {
   }
 
   var page = req.query.page || 1;
-  var limit = req.query.limit || 12;
-  var sort = category == 'news' ? 'creationdate' : 'creationdate';
+  var limit = req.query.limit || 1200;
+  var sort = category == 'news' ? '-creationdate' : 'creationdate';
+
+  //console.log(category, page, limit);
 
   Post.model.find({category: category})
-    .limit(limit)
+    .limit(parseInt(limit))
     .skip((page - 1) * limit)
     .sort(sort)
     .exec(function(err, posts) {
+      if(err){
+        res.jsonp({code:500,data:err});
+        return;
+      }
       var result = null;
       if (category === 'news') {
         result = posts.map(item => {
