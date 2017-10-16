@@ -183,7 +183,6 @@ ul, li {
 .ph-list .thumbnail {
     border-radius: 0;
     padding: 2px;
-    max-height: 305px;
 }
 .ph-list .row {
     margin-right: -10px;
