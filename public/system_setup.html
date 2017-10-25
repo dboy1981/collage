@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>上海理工大学校欢迎你！</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <link href="./css/blog.css" rel="stylesheet">
+  <!--[if lt IE 9]><script src="./assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="./js/ie-emulation-modes-warning.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div style="margin:30px" class="btn-group" role="group" aria-label="...">
+        <button id="onBtn" type="button" class="btn btn-default">开 机</button>
+        <button id="offBtn" type="button" class="btn btn-default">关 机</button>
+      </div>
+  <script>
+    function controler(action){
+      var url = '/api/controler/' + action;
+      $.get(url, function(data){
+        console.log(data);
+      })
+    }
+
+    $(function(){
+      $('#onBtn').click(function(e){
+        e.preventDefault();
+        controler('on');
+      });
+
+      $('#offBtn').click(function(e){
+        e.preventDefault();
+        controler('off');
+      });
+    })
+  </script>
+</html>

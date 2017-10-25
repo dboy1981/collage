@@ -77,9 +77,9 @@
       <div class="input-group-btn">
             <button type="button" class="btn btn-default btn-lg" aria-label="Help"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </div>
-          <input type="text" class="form-control input-lg" placeholder="输入需要查询的教师名字...">
+          <input v-model="searchTxt" type="text" class="form-control input-lg" :placeholder="'输入' + searchTitle + '名字...'">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default btn-lg btn-ss">搜 索</button>
+            <button @click="search" type="button" class="btn btn-default btn-lg btn-ss">搜 索</button>
           </div>
         </div>
       <p class="ff-btn" onclick="window.location.href='/';"><img src="./images/ff-btn.png" data-holder-rendered="true"></p>
@@ -102,7 +102,9 @@
       data: function(){
           return {
           items: [],
-          top: []
+          srcItems: [],
+          top: [],
+          searchTxt: ''
         }
       },
       created: function(){
@@ -111,6 +113,21 @@
       methods: {
         detail: function(id){
           window.location.href='/detail.html?id=' + id;
+        },
+        search() {
+          console.log(this.searchTxt);
+          this.items = [];
+          if(!this.searchTxt) {
+            this.items = this.items.concat(this.srcItems);
+          }else{
+            var self = this;
+            this.srcItems.forEach(function(item){
+              if(item.title.indexOf(self.searchTxt) > -1){
+                console.log(item.title);
+                self.items.push(item);
+              }
+            })
+          }
         }
       },
       computed: {
@@ -126,6 +143,21 @@
               return '获奖介绍';
             case 'classmate':
               return '校友介绍';  
+          }
+          return "";
+        },
+        searchTitle: function(){
+          switch(getParameterByName("t")){
+            case 'news':
+              return '新闻';
+            case 'leader':
+              return '领导';
+            case 'teacher':
+              return '教师';
+            case 'award':
+              return '奖励';
+            case 'classmate':
+              return '校友';  
           }
           return "";
         }
@@ -153,7 +185,8 @@
           alert('System Error!(' + ret.code + ')');
           return;
         }
-        target.items = ret.data;
+        target.items = target.items.concat(ret.data);
+        target.srcItems = target.srcItems.concat(ret.data);
         ret.data.forEach(function(item) {
           if(item.status === 'top')
           target.top.push(item);

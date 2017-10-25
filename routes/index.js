@@ -41,6 +41,7 @@ exports = module.exports = function (app) {
 	app.get('/api/weather', routes.apis.weather);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-	// app.get('/protected', middleware.requireUser, routes.views.protected);
+	app.get('/systemsetup', middleware.requireUser, routes.views.systemsetup);
+	app.get('/api/controler/:action', middleware.requireUser, routes.apis.controler);
 
 };

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>上海理工大学校欢迎你！</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <link href="./css/blog.css" rel="stylesheet">
+  <!--[if lt IE 9]><script src="./assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="./js/ie-emulation-modes-warning.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">USST</a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active" id="weblink"><a>网站配置</a></li>
+          <li id="systemlink"><a>系统配置</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div>
+      <iframe frameborder="0" scrolling="yes" id="mainframe" name="mainframe" width="100%" height="1000px" src="/keystone"></iframe>
+  </div>
+  <script>
+    function navigator(path){
+      $('#mainframe').attr('src', path);
+    }
+
+    $(function(){
+      $('#weblink').click(function(e){
+        e.preventDefault();
+        $('.active').removeAttr('class');
+        $(this).attr('class', 'active');
+        navigator('/keystone');
+      });
+
+      $('#systemlink').click(function(e){
+        e.preventDefault();
+        $('.active').removeAttr('class');
+        $(this).attr('class', 'active');
+        navigator('/systemsetup');
+      })
+    })
+  </script>
+</html>

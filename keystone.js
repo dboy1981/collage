@@ -25,6 +25,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	'signin redirect': '/manage.html'
 });
 
 // Load your project's Models
